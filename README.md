@@ -5,7 +5,7 @@ For the ISTA 498 Capstone at the University of Arizona we set out to create an a
 
 Next we will layout the process we took to create this application how it is running. 
 
-##Design Overveiew
+## Design Overveiew
 
 ## Kaggle Data Set
 
