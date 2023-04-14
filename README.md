@@ -5,7 +5,7 @@ For the ISTA 498 Capstone at the University of Arizona we set out to create an a
 
 Next we will layout the process we took to create this application how it is running. 
 
-## Design Overveiew
+## Design Overview
 For this poject we wanted to create a design that wanted to create a logo that demonstrated our application while also using a color scheme that would utimately highlight all of our apps application and useability... 
 
 ## Kaggle Data Set
@@ -14,11 +14,18 @@ One of the most important variables that we wanted to implement into our applica
 Link: https://www.kaggle.com/datasets/thoughtvector/podcastreviews
 
 For the application you need to download the JSON Files for the reviews, categories, and podcasts. 
+![image](https://user-images.githubusercontent.com/86931268/232164130-01b38c58-6d35-4989-9942-9d4f1a768951.png)
 ![image](https://user-images.githubusercontent.com/86931268/232164039-d7244d35-3504-434e-afc2-3809784f94f3.png)
 
-
+## Data Cleaning/Filtering
+Once you have downloaded the JSON file the next step is to run the file called "podcast json Script.R" in RStudio. The purpose of this file is take the JSON files transform them into a dataframe, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
+<Insert Any Images>? 
+  
 ## Web Scrapper: Getting RSS Links
-To 
+The purpose of this webscrapper is to get all the RSS links for the podcasts from the kaggle data. An RSS link is something that every podcast has which is usually and html/xml page that contains basic information about the podcast. We will use the links to gather more information about the podcasts such as number or episodes, descriptions, whether it's explicit, etc... The purpose of this though is to just get the RSS links. 
+  
+The way that this scrapper works is by taking the csv file from kaggle was a input. Take all the names of the.
+  
 ## Web Scrapper: Collecting RSS Data
 
 ## Merging The Datasets Kaggle and RSS
