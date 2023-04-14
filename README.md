@@ -19,6 +19,7 @@ For the application you need to download the JSON Files for the reviews, categor
 
 ## Data Cleaning/Filtering
 Once you have downloaded the JSON file the next step is to run the file called "podcast json Script.R" in RStudio. The purpose of this file is take the JSON files transform them into a dataframe, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
+
 <Insert Any Images>? 
   
 ## Web Scrapper: Getting RSS Links
