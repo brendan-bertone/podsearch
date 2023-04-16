@@ -43,9 +43,18 @@ From there, each podsearch_df was saved as a CSV, and towards the end of the web
 
 ## Merging The Datasets Kaggle and RSS
 
-To merge the tidied Kaggle data and the collected RSS data, we created another R script. We read in both datasets and left-joined the Kaggle data to the RSS data with the index being "xml_link". We removed rows that had NAs for "categories", and the final dataset was exported as a CSV. The final column values of this dataset were: xml_link, title, description, show_link, number_episodes, explicit, birthday, zodiac, podcast_id, average_rating, ratings_count, categories.
+To merge the tidied Kaggle data and the collected RSS data, we created another R script. We read in both datasets and left-joined the Kaggle data to the RSS data with the index being "xml_link". We removed rows that had NAs for "categories", and the final dataset was exported as a CSV. The final column values of this dataset were: xml_link, title.x, description, show_link, number_episodes, explicit, birthday, zodiac, podcast_id, average_rating, ratings_count, categories.
 
-## R-Shiny Dashboard
+## R-Shiny Dating Dashboard
+
+The R-Shiny dating dashboard, which is being hosted on the React website, is comprised of a "filters" column on the left and the reactive datatable and 'dating app' tabs on the right. 
+
+At the top of this app document, some final data mutations are made to the complete PodSearch dataset: the "birthday" timestamp is modified to not be as long, some variables are changed to be capitalized, individual categories are extracted from "categories", and HTML tags that were in "description" were removed. HTML style choices were also applied here.
+
+Beneath that, the UI and server were defined to create the "dating dashboard"; users are encouraged to pick options within each filter to received a randomized "match" from the filtered dataset. In the table tab, they can modify the filters however they see fit to gather all of their "matches" at once. 
+
+## R-Shiny Visualizations Dashboard
+
 
 ## React Website
 
