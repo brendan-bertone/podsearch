@@ -20,7 +20,7 @@ For the application you need to download the JSON Files for the reviews, categor
 ## Data Cleaning/Filtering
 Once you have downloaded the JSON file the next step is to run the file called "podcast json Script.R" in RStudio. The purpose of this file is take the JSON files transform them into a dataframe, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
 
-We began by filtering the data to only include podcasts that had all the relevant data. From there we bagan filtering the data based on average rating and number of reviews contributing to the reviews. Due to time constrants and limations in our searching abilities we decided to onlyu include podcasts that had a average rating of 5 with atleast 50 reviews. This left us with about 700 podcasts. Unfortuantely we found with the data that were was a limited number of podcasts that had written reviews with them so if we were to expand this project or add more variables in the future this would have been a good place to start. 
+We began by filtering the data to only include podcasts that had all the relevant data. From there we began filtering the data based on average rating and number of reviews contributing to the reviews. Due to time constrants and limations in our searching abilities we decided to only include podcasts that had a average rating of 5 with atleast 50 reviews. This left us with about 700 podcasts. Unfortuantely we found with the data that were was a limited number of podcasts that had written reviews with them so if we were to expand this project or add more variables in the future this would have been a good place to start. 
 
 INPUT IMAGE OF Filtering. 
 
@@ -35,7 +35,15 @@ The way that this scrapper works is by taking the csv file from kaggle was a inp
   
 ## Web Scrapper: Collecting RSS Data
 
+The second step in the webscraping is running an R script. This webscrapper takes CSVs of collected RSS links from the previous step and uses the XML and xml2 packages. The script iterates through each podcast in a CSV, pulling values from particular nodes and from averaged data. From there, a new row of data would be appended to an empty dataframe, podsearch_df, where users could analyze it and double-check that the webscraping went well. 
+
+Some difficulties we ran into at this step were that not all RSS feeds were not structured the same. Many had missing values or stored information under different node names. An error message in the iteration would alert us to rows that would not be completable, and looking over podsearch_df alerted us to any issues that made it past the scraper that required our attention. 
+
+From there, each podsearch_df was saved as a CSV, and towards the end of the webscraping task, the CSVs were combined to create the complete dataset of RSS data. This final script here also removed rows that were completely NAs, rows that were duplicate podcasts based on "title", and rows that had a value in "zodiac" that was not a zodiac.
+
 ## Merging The Datasets Kaggle and RSS
+
+To merge the tidied Kaggle data and the collected RSS data, we created another R script. We read in both datasets and left-joined the Kaggle data to the RSS data with the index being "xml_link". We removed rows that had NAs for "categories", and the final dataset was exported as a CSV. The final column values of this dataset were: xml_link, title, description, show_link, number_episodes, explicit, birthday, zodiac, podcast_id, average_rating, ratings_count, categories.
 
 ## R-Shiny Dashboard
 
