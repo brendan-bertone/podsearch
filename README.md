@@ -19,6 +19,14 @@ For the application you need to download the JSON Files for the reviews, categor
 
 ## Data Cleaning/Filtering
 Once you have downloaded the JSON file the next step is to run the file called "podcast json Script.R" in RStudio. The purpose of this file is take the JSON files transform them into a dataframe, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
+
+We began by filtering the data to only include podcasts that had all the relevant data. From there we bagan filtering the data based on average rating and number of reviews contributing to the reviews. Due to time constrants and limations in our searching abilities we decided to onlyu include podcasts that had a average rating of 5 with atleast 50 reviews. This left us with about 700 podcasts. Unfortuantely we found with the data that were was a limited number of podcasts that had written reviews with them so if we were to expand this project or add more variables in the future this would have been a good place to start. 
+
+INPUT IMAGE OF Filtering. 
+
+The result of this code is to print out a CSV file with all the titles of the podcasts. 
+
+IMAGE OF CSV 
   
 ## Web Scrapper: Getting RSS Links
 The purpose of this webscrapper is to get all the RSS links for the podcasts from the kaggle data. An RSS link is something that every podcast has which is usually and html/xml page that contains basic information about the podcast. We will use the links to gather more information about the podcasts such as number or episodes, descriptions, whether it's explicit, etc... The purpose of this though is to just get the RSS links. 
