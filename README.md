@@ -41,6 +41,7 @@ The way that these scrapper works is by taking the CSV file from Kaggle was a in
 ## Web Scrapper: Collecting RSS Data
 
 ## Merging The Datasets Kaggle and RSS
+![image](https://user-images.githubusercontent.com/86931268/232601860-6d7f032d-eaec-4c6c-912a-ba1ac3ca1489.png)
 
 ## R-Shiny Dashboard
 Link: https://github.com/rbalderas1/PodSearchOne
