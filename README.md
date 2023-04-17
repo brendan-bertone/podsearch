@@ -44,9 +44,11 @@ The way that these scrapper works is by taking the CSV file from Kaggle was a in
 
 ## R-Shiny Dashboard
 Link: https://github.com/rbalderas1/PodSearchOne
+
 For the dating app…
 
 Link: https://github.com/rbalderas1/podsearch_visualiztions_v2
+
 The visualizations dashboard is meant to visualize all of the podcast data that has been scraped and cleaned. This dashboard is meant to help inform users on what the data the dashboard consists of, which then gives the user an idea of what searches they can do. The dashboard consists of bar plots, line plots, and word clouds. The two main filters with the dashboard are the zodiac and the genre/category filters.
 
 ## React Website
