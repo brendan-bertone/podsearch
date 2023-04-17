@@ -78,6 +78,7 @@ In the next script “Merge Kaggle RSS Data.r”. We read in the csv from the RS
 The R-Shiny dating dashboard, which is being hosted on the React website, is comprised of a "filters" column on the left and the reactive datatable and 'dating app' tabs on the right.
 At the top of this app document, some final data mutations are made to the complete PodSearch dataset: the "birthday" timestamp is modified to not be as long, some variables are changed to be capitalized, individual categories are extracted from "categories", and HTML tags that were in "description" were removed. HTML style choices were also applied here.
 Beneath that, the UI and server were defined to create the "dating dashboard"; users are encouraged to pick options within each filter to receive a randomized "match" from the filtered dataset. In the table tab, they can modify the filters however they see fit to gather all of their "matches" at once.
+
 Repository Link: https://github.com/rbalderas1/PodSearchOne
 
 ## R-Shiny Visualizations Dashboard
@@ -87,6 +88,9 @@ Repository Link: https://github.com/rbalderas1/podsearch_visualiztions_v2
 
 ## React Website
 The React website is meant to host the dating dashboard and visualizations dashboard in one place to make it easier for people to access our project. We went through the process of designing the color scheme, logos, and look of the website before we went through the process of building the website. The website was then created using React and pushed to an AWS server.
+
+Link: https://main.d3h1hpalkc9yzt.amplifyapp.com/
+
 ![image](https://user-images.githubusercontent.com/86931268/232615355-b44805ec-862c-491a-8812-d249d51981a7.png)
 ![image](https://user-images.githubusercontent.com/86931268/232615366-2e843873-2c85-46d0-a634-c500ed055998.png)
 
