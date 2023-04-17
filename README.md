@@ -43,7 +43,7 @@ podcast_id_titles.csv
 ##  Web Scrapper: Getting RSS Links
 The purpose of this web scraper is to get all the RSS links for the podcasts from the Kaggle data. An RSS link is something that every podcast has which is usually an html/xml page that contains basic information about the podcast. We will use the links to gather more information about the podcasts such as the number of episodes, descriptions, whether it's explicit, etc… 
 
-This web scrapper will simply get the links for each RSS feed for the individual podcasts.
+This web scrapper will simply get the links for each RSS feed for the individual podcasts. The webscrapper is called "Capstone_Webscrapper_RSS_Links.ipynb" and is run through Google Collab using pyhton.
   
 The web scraper has 3 main parts. The first part is where it uploads the podcast_id_titles.csv and transforms it into a dataframe. From there it will create a list of all the titles that can be used to search for the podcast. 
 
