@@ -26,13 +26,13 @@ For the application, you need to download the JSON Files for the reviews, catego
 ![image](https://user-images.githubusercontent.com/86931268/232164039-d7244d35-3504-434e-afc2-3809784f94f3.png)
 
 ## Data Cleaning/Filtering
-Once you have downloaded the JSON file the next step is to run the file called "podcast json Script.R" in RStudio. The purpose of this file is to take the JSON files transform them into a data frame, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
+Once you have downloaded the JSON files the next step is to run the file called "kaggle podcast cleaning filtering script.R" in RStudio. The purpose of this file is to take the JSON files transform them into a data frame, filter the # of podcasts to the ones we want, combine the podcast, categories, and reviews into one table, and lastly create a CSV with all the titles of the podcasts that we want to look for. 
 
-We began by filtering the data to only include podcasts that had all the relevant data. From there we began filtering the data based on average rating and the number of reviews contributing to the reviews. Due to time constraints and limitations in our searching abilities we decided to only include podcasts that had an average rating of 5 with at least 50 reviews. This left us with about 700 podcasts. Unfortunately we found with the data that were was a limited number of podcasts that had written reviews with them so if we were to expand this project or add more variables in the future this would have been a good place to start. 
+We began by filtering the data to only include podcasts that had all the relevant data. From there we began filtering the data based on average rating and the number of people contributing to the ratings. Due to time constraints and limitations in our searching abilities we decided to only include podcasts that had an average rating of 5 with at least 50 rating them. This left us with about 700 podcasts. Unfortunately we found with the data that were was no podcasts that had reviews that met our filtering requirements. If we were to expand this project or add more data in the future this would be a good place to start.
 
 ![image](https://user-images.githubusercontent.com/86931268/232615005-5d9f74e5-a8f6-476f-88bd-426d4a945e62.png)
 
-The result of this code is to print out a CSV file with all the titles of the podcasts. 
+The result of this code is to print out two CSV's the first which has all the kaggle data and the second which only has the titles and podcast_id. 
 
 Kaggle_all.csv 
 ![image](https://user-images.githubusercontent.com/86931268/232615032-8c128add-b220-4c4a-a0f5-1375307f7066.png)
@@ -42,18 +42,24 @@ podcast_id_titles.csv
 
 ##  Web Scrapper: Getting RSS Links
 The purpose of this web scraper is to get all the RSS links for the podcasts from the Kaggle data. An RSS link is something that every podcast has which is usually an html/xml page that contains basic information about the podcast. We will use the links to gather more information about the podcasts such as the number of episodes, descriptions, whether it's explicit, etc… 
+
 This web scrapper will simply get the links for each RSS feed for the individual podcasts.
   
-The web scraper has 3 main parts. The first part is where it uploads the podcast_id_titles.csv and transforms it into a dataframe. From there it will create a list of all the titles that can be used to search for the podcast. Part 2 of the script is where you can use either the Google Method or Duck Duck Go method to use the title to search for the podcast addict link for the specific podcast. We used the Google Method for the Capstone because it ultimately proved to be more reliable and could do more links at a time. Google allowed us to do about 45 podcasts per a time where Duck Duck GO limited us to 10-20.  
+The web scraper has 3 main parts. The first part is where it uploads the podcast_id_titles.csv and transforms it into a dataframe. From there it will create a list of all the titles that can be used to search for the podcast. 
+
+Part 2 of the script is where you can use either the Google Method or Duck Duck Go method to use the titles to search for the podcast addict link for the specific podcast. We used the Google Method for the capstone because it ultimately proved to be more reliable and could do more links at a time. Google allowed us to do about 45 podcasts per a time where Duck Duck GO limited us to 10-20. In the images you can see the process if we were to manually do it. 
+
 Part 2 
 ![image](https://user-images.githubusercontent.com/86931268/232615122-520d346b-ac2a-4002-ac14-989af220936e.png)
 ![image](https://user-images.githubusercontent.com/86931268/232615144-ba5fff8e-0f8e-4abf-9dd3-c277c9fb3cd0.png)
 
-The last part of the script uses the podcast addict link from part 2 and scrapes the site for the RSS link that is on the page. Podcast addicts also had limitations with scrapping. After doing about 100 requests it wouldn’t allow us to search again for an hour or 2. This is also an active site and is continuously changing or having downtime so throughout collecting our data we had to modify the script. If we were to do it again we would look into other sites that possibly would have had the same information. The last piece of the web scrapper was to output a CSV that contained the links of all the RSS feeds for the podcasts.
+The last part of the script uses the podcast addict link from part 2 and scrapes the podcastadditct site for the RSS link that is on the page. Podcast addicts also had limitations with scrapping. After doing about 100 requests it wouldn’t allow us to search again for an hour or 2. This is also an active site and is continuously changing or having downtime so throughout collecting our data we had to modify the script (If it doesn't work let us know and we can look at it). If we were to do it again we would look into other sites that possibly would have also had a database of RSS Links. The last piece of the web scrapper was to output a CSV that contained the links of all the RSS feeds for the podcasts.
+
 Part 3
 ![image](https://user-images.githubusercontent.com/86931268/232615168-5e798676-b575-4526-9b77-a8b95fce78bf.png)
 
 Outside of the script, there was a manual piece to this part of the project. Since we could only run about 40-50 podcasts at a time we would manually take the results of the RSS link web scapper and add the links to a copy of the podcast_id_titles.csv which was called Podcast_Titles_RSS_Links_MASTER.CSV. This CSV was an exact copy of the podcast_id_titles.csv except that it had an extra column that contained the RSS Links.
+
 ![image](https://user-images.githubusercontent.com/86931268/232615194-db6856d5-d043-4ac0-8ef5-187988e96108.png)
 
 ## Web Scraper: Collecting RSS Data
@@ -63,20 +69,24 @@ The second step in the webscraping is running an R script. This webscraper takes
 ![image](https://user-images.githubusercontent.com/86931268/232615242-292bcb41-af3d-4222-9e95-fa3a1d221d6f.png)
 
 Some difficulties we ran into at this step were that not all RSS feeds were not structured the same. Many had missing values or stored information under different node names. An error message in the iteration would alert us to rows that would not be completable, and looking over podsearch_df alerted us to any issues that made it past the scraper that required our attention.
+
 From there, each podsearch_df was saved as a CSV, and towards the end of the webscraping task, the CSVs were combined to create the complete dataset of RSS data. This final script here also removed rows that were completely NAs, rows that were duplicate podcasts based on "title", and rows that had a value in "zodiac" that was not a zodiac.
 
 ## Merging The Datasets Kaggle and RSS Links/Data
 
-To merge the tidied Kaggle data and the collected RSS data, we created two R scripts. 
+To merge the Kaggle data and the collected RSS data, we created two R scripts. 
 
-The first R Script called “merge kaggle rss links.R”  combines the Podcast_Titles_RSS_Links_MASTER.CSV with the kaggle_all.csv. This essentially takes the results of the first webscrapper and mergers it with the kaggle data.  In the script, we cleaned and filtered the data to get rid of redundant columns and rows that didn’t have RSS links. This script gave us all the podcast information from kaggle and the rss links which would be used in the next script. The output of this was written to a CSV called podsearch_final.csv
+The first R Script called “merge kaggle rss links.R”  combines the Podcast_Titles_RSS_Links_MASTER.CSV with the kaggle_all.csv. This essentially takes the results of the first webscrapper and mergers it with the filtered kaggle data.  In the script, we cleaned and filtered the data to get rid of redundant columns and podcasts that didn’t have RSS links. This script gave us all the podcast information from kaggle and the rss links which would be used in the next script. The output of this was written to a CSV called podsearch_final.csv
+
 ![image](https://user-images.githubusercontent.com/86931268/232615277-63a2dbb3-c786-46cb-8943-f4fc09eb8bf1.png)
 
-In the next script “Merge Kaggle RSS Data.r”. We read in the csv from the RSS Data collection and the podsearch_final.csv which has the RSS links and kaggle data from the previous script and conduct a left-joined the Kaggle data to the RSS data with the index being "xml_link". We removed rows that had NAs for "categories", and the final dataset was exported as a CSV. The final column values of this dataset were: xml_link, title.x, description, show_link, number_episodes, explicit, birthday, zodiac, podcast_id, average_rating, ratings_count, categories.
+In the next script “merge kaggle rss data.r”. We read in the csv from the RSS Data collection and the podsearch_final.csv which has the RSS links and kaggle data from the first script and conduct a left-joined the Kaggle data to the RSS data with the index being "xml_link". We removed rows that had NAs for "categories", and the final dataset was exported as a CSV. The final column values of this dataset were: xml_link, title.x, description, show_link, number_episodes, explicit, birthday, zodiac, podcast_id, average_rating, ratings_count, categories.
 
 ## R-Shiny Dating Dashboard
 The R-Shiny dating dashboard, which is being hosted on the React website, is comprised of a "filters" column on the left and the reactive datatable and 'dating app' tabs on the right.
+
 At the top of this app document, some final data mutations are made to the complete PodSearch dataset: the "birthday" timestamp is modified to not be as long, some variables are changed to be capitalized, individual categories are extracted from "categories", and HTML tags that were in "description" were removed. HTML style choices were also applied here.
+
 Beneath that, the UI and server were defined to create the "dating dashboard"; users are encouraged to pick options within each filter to receive a randomized "match" from the filtered dataset. In the table tab, they can modify the filters however they see fit to gather all of their "matches" at once.
 
 Repository Link: https://github.com/rbalderas1/PodSearchOne
